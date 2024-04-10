@@ -28,4 +28,53 @@
 # Saraksti - https://www.w3schools.com/python/python_lists.asp
 # Vārdnīcas - https://www.w3schools.com/python/python_dictionaries.asp
 # Klonēt repozitoriju - hhttps://code.visualstudio.com/docs/sourcecontrol/intro-to-git
-#
+
+import json
+
+preces = []
+
+             
+with open('preces.json', 'r') as openfile:
+    preces_file = open('preces.json') 
+    preces = json.load(preces_file)
+    preces_file.close()
+
+   
+#mēs izmantojam šeit while, lai mēs varētu jebkuru no tālāk uzskaitītajiem
+    while True:
+        print("kases aparatu menu")
+        print("1.pievienot jaunu preci - nosaukumu un cenu")
+        print("2.dzēst preci pēc kārtas numura")
+        print("3.iztukšot preču sarakstu")
+        print("4.piemērot atlaidi, ievadīt summu procentos")
+        print("5.samaksāt, ja iedota lielāka summa - izdrukāt atlikumu")
+        print("6.izdrukāt čeku uz ekrāna - preces nosaukumus un summas")
+        print("7.Exit")    
+        choice = input("Enter your choice: ")
+#mēs izmantojam šeit if,ja atlasītu 1 numuru un pievienotu produktu savam sarakstam  
+        if choice == "1":
+            nosaukums = input("Enter nosaukums:")
+            cena = float(input("Enter prece cena"))
+            new_prece ={"nosaukums" : nosaukums, "cena" : cena}
+            preces.append(new_prece)
+            pass
+#šeit, ja atlasāt numuru 2, varat kaut ko noņemt no saraksta      
+        if choice == "2":
+            id = int(input("Enter the index of the prece to remove:"))
+            preces.pop(id)
+            pass
+#šeit, ja atlasāt numuru 3, varat izdzēst visu sarakstu    
+        if choice == "3":
+            del preces
+            pass
+#5% atlaide jebkurai precei, izvēloties numuru 4
+        if choice == "4":
+            summa = input
+            d1 = int(input("10:  "))
+            g1 = d1 // 100 * 5
+            print("cena ar atlaidu - ", d1 - g1)
+            pass
+            
+
+        with open("preces.json", "w") as preces_file:
+                json.dump(preces, preces_file)
